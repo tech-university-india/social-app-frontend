@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Mckinsey-Italic";
+  src: url('./assets/fonts/McKinseySans-Italic.woff');
+  }
+
+@font-face {
+  font-family: "Mckinsey-Light";
+  src: url('./assets/fonts/McKinseySans-Light.woff');
+}
+
+@font-face {
+  font-family: "Mckinsey-Light-Italic";
+  src: url('./assets//fonts/McKinseySans-LightItalic.woff');
+}
+
+@font-face {
+  font-family: "Mckinsey-Medium";
+  src: url('./assets/fonts/McKinseySans-Medium.woff');
+}
+
+@font-face {
+  font-family: "Mckinsey-Medium-Italic";
+  src: url('./assets/fonts/McKinseySans-MediumItalic.woff');
+}
+
+@font-face {
+  font-family: "Mckinsey-Regular";
+  src: url('./assets/fonts/McKinseySans-Regular.woff');
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Mckinsey-Regular';
+}
