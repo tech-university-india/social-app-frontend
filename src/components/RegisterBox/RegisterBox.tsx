@@ -4,6 +4,7 @@ const RegisterBox = () => {
     return ( 
         <div>
             <div className='login-box'>
+                <input type='number' placeholder='FMNO' />
                 <input type='text' placeholder='First Name' />
                 <input type='text' placeholder='Last Name' />
                 <input type='text' placeholder='Designation' />

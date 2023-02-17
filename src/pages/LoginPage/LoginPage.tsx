@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import loginbackground from '../../assets/login-background.png';
 import LoginBox from '../../components/LoginBox/LoginBox';
 import './LoginPage.css';
 
 const LoginPage = () => {
+    const [userName,setUserName] = useState('');
+    
     return (
         <div className='login-page'>
             <img className='move-bg-right' src={loginbackground} />

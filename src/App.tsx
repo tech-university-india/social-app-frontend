@@ -6,10 +6,10 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 function App() {
     return (
-        <div> 
+        <div>
             <BrowserRouter >
                 <Routes >
-                    <Route  path='/login' element={<LoginPage />} />
+                    <Route path='/login' element={<LoginPage />} />
                     <Route path='/register' element={<RegisterPage />} />
                 </Routes>
             </BrowserRouter>
