@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { RegisterBox } from '../../components';
 import { REGISTER } from '../../constants/ApiEndpoints';
 import makeRequest from '../../utils/makeRequest';
 import './RegisterPage.css';
 
 const RegisterPage = () => {
+    const navigate = useNavigate();
+    const [validateError, setValidateError] = useState('');
 
     const [userData, setUserData] = useState({
         fmno: '',
-        firstName: '',
-        lastName: '',
+        userName: '',
         designation: '',
         email: '',
         password: ''
@@ -20,7 +21,7 @@ const RegisterPage = () => {
         makeRequest({ ...REGISTER }, {
             data: {
                 'FMNO': userData.fmno,
-                'userName': userData.firstName + ' ' + userData.lastName,
+                'userName': userData.userName,
                 'email': userData.email,
                 'password': userData.password,
                 'designation': userData.designation
@@ -28,7 +29,10 @@ const RegisterPage = () => {
         })
             .then(resp => {
                 localStorage.setItem('jwtToken', resp.access_token);
-                Navigate('/home');
+                navigate('/feed');
+            })
+            .catch(err=>{
+                setValidateError(err.message);
             });
     };
 
@@ -37,7 +41,13 @@ const RegisterPage = () => {
         <div className='register-page'>
             <img className='move-bg-right ' src='/assets/Images/login-background.png' />
             <div className='move-box-left' id='register-move-box-left'>
-                <RegisterBox userData={userData} setUserData={setUserData} handelRegisterClick={handelRegisterClick} />
+                <RegisterBox 
+                    userData={userData} 
+                    setUserData={setUserData} 
+                    handelRegisterClick={handelRegisterClick}
+                    validateError={validateError}
+                    setValidateError={setValidateError} 
+                />
             </div>
         </div>
     );

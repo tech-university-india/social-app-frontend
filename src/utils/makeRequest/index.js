@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BACKEND_URL, ERROR_ROUTE } from '../../constants/ApiEndpoints';
+import { formatErrorMessage } from '../common';
 
 const makeRequest = async(
     apiEndPoint,
@@ -22,6 +23,7 @@ const makeRequest = async(
         const { data } = await axios(requestDetails);
         return data;
     } catch (e) {
+        
         if (navigate) {
             const errorStatus = e.response.status;
             if (errorStatus) {
@@ -30,6 +32,8 @@ const makeRequest = async(
                 navigate(ERROR_ROUTE);
             }
         }
+
+        throw Error(formatErrorMessage(e.response.data.message));
     }
 };
 
