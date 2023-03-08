@@ -8,13 +8,9 @@ const axiosObject = axios.create({
 	},
 });
 
-const makeRequest = async (url, method, dynamicConfig) => {
+const makeRequest = async (request) => {
 	try{
-		const response = await axiosObject({
-			method,
-			url,
-			...dynamicConfig,
-		});
+		const response = await axiosObject(request);
 		return response.data;
 	} catch(error) {
 		console.log(error);

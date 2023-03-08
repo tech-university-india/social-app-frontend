@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Feed from './pages/Feed';
+import PostFeed from './pages/PostFeed';
 // import LoginPage from './pages/Login';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Feed />} />
+					<Route path="/" element={<PostFeed />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

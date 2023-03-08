@@ -1,21 +1,42 @@
 export const BACK_END_URL = 'http://localhost:4000';
 
 export const AUTH_LOGIN = (data) => ({
-	url: `${BACK_END_URL}/auth/login`,
+	url: '/auth/login',
 	method: 'POST',
 	data,
 });
 
 export const AUTH_REGISTER = (data) => ({
-	url: `${BACK_END_URL}/auth/register`,
+	url: '/auth/register',
 	method: 'POST',
 	data,
 });
 
-export const GET_POST_FEED = {
-	url: `${BACK_END_URL}/entity/post/feed`,
+export const GET_POST_FEED = (url = `/entity/post/feed`) => ({
+	url: url,
 	method: 'GET',
 	headers: {
-		Authorization: `Bearer ${localStorage.getItem('token')}`,
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4MDM3Njk4LCJleHAiOjE2NzgxMjQwOTh9.b68nI-ZjqSNlFIBY63JWB7Vs3C_2ZDEVYvc3wOizydA'
+		// Authorization: `Bearer ${localStorage.getItem('token')}`,
 	}
-};
+});
+
+export const POST_ACTION = (data) => ({
+	url: '/action',
+	method: 'POST',
+	data,
+	headers: {
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4MDM3Njk4LCJleHAiOjE2NzgxMjQwOTh9.b68nI-ZjqSNlFIBY63JWB7Vs3C_2ZDEVYvc3wOizydA'
+		// Authorization: `Bearer ${localStorage.getItem('token')}`,
+	}
+});
+
+export const DELETE_ACTION = (id) => ({
+	url: `/action/${id}`,
+	method: 'DELETE',
+	data,
+	headers: {
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4MDM3Njk4LCJleHAiOjE2NzgxMjQwOTh9.b68nI-ZjqSNlFIBY63JWB7Vs3C_2ZDEVYvc3wOizydA'
+		// Authorization: `Bearer ${localStorage.getItem('token')}`,
+	}
+})

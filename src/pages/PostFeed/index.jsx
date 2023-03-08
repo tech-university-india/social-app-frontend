@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import Post from '../../components/Post';
 import { GET_POST_FEED } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
 
-const Feed = () => {
+const PostFeed = () => {
 
 	const [posts, setPosts] = useState();
 	const [next, setNext] = useState(null);
@@ -11,6 +11,8 @@ const Feed = () => {
 	const [loading, setLoading] = useState(false);
 
 	console.log('rendered')
+
+	const memoizedPosts = useMemo(() => posts, [posts]);
 
 	const observer = new useRef();
 	const lastPostRef = useCallback((node) => {
@@ -21,7 +23,7 @@ const Feed = () => {
 				console.log('visible')
 				setLoading(true);
 				console.log(next);
-				makeRequest(next, GET_POST_FEED.method, { headers: GET_POST_FEED.headers })
+				makeRequest({ url: next, method: GET_POST_FEED().method, headers: GET_POST_FEED().headers })
 					.then((res) => {
 						setPosts((prevPosts) => [...prevPosts, ...res.items]);
 						setNext(res.meta.next);
@@ -38,7 +40,7 @@ const Feed = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		makeRequest(GET_POST_FEED.url, GET_POST_FEED.method, { headers: GET_POST_FEED.headers })
+		makeRequest(GET_POST_FEED())
 			.then((res) => {
 				console.log(res);
 				setPosts(res.items);
@@ -51,19 +53,30 @@ const Feed = () => {
 			});
 	}, []);
 
+	const actionHandler = (index) => {
+		console.log(index)
+		setPosts((prevPosts) => {
+			const newPosts = structuredClone(prevPosts);
+			newPosts[index].liked = !newPosts[index].liked;
+			newPosts
+			return newPosts;
+		})
+	}
+
 	return (
 		// !loading &&
 		<div className="feed">
-			{posts
-				&& posts.map((post, index) =>
-					posts.length === index + 1
-						? <Post key={post.id} post={post} />
-						: <Post key={post.id} ref={lastPostRef} post={post} />
+			{memoizedPosts
+				&& memoizedPosts.map((post, index) => <Post key={post.id} post={post} index={index} />
+					// posts.length === index + 1
+					// 	? <Post key={post.id} post={post} index={index} />
+					// 	: <Post key={post.id} ref={lastPostRef} post={post} index={index} handleAction={actionHandler}/>
 				)
 			}
+			<div className="ref-div" ref={lastPostRef}></div>
 			{loading && <div>Loading...</div>}
 		</div>
 	);
 };
 
-export default Feed;
+export default PostFeed;
