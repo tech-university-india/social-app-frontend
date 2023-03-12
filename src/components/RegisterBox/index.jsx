@@ -11,7 +11,7 @@ const RegisterBox = (props) => {
         props.setValidateError('');
     };
 
-    return ( 
+    return (
         <div>
             <div className='register-box'>
                 <input type='number' name='fmno' placeholder='FMNO' onChange={handleInputChange} />
@@ -19,7 +19,7 @@ const RegisterBox = (props) => {
                 <input type='text' name='designation' placeholder='Designation' onChange={handleInputChange} />
                 <input type='text' name='email' placeholder='Enter your Mckinsey Email' onChange={handleInputChange} />
                 <input type='password' name='password' placeholder='Create a password' onChange={handleInputChange} />
-                
+
                 <div className='error-message'>{props.validateError}</div>
 
                 <button onClick={props.handelRegisterClick} >Register</button>
@@ -28,7 +28,7 @@ const RegisterBox = (props) => {
         </div>
     );
 };
- 
+
 export default RegisterBox;
 
 RegisterBox.propTypes = {

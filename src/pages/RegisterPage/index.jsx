@@ -31,7 +31,7 @@ const RegisterPage = () => {
                 localStorage.setItem('jwtToken', resp.access_token);
                 navigate('/feed');
             })
-            .catch(err=>{
+            .catch(err => {
                 setValidateError(err.message);
             });
     };
@@ -41,12 +41,12 @@ const RegisterPage = () => {
         <div className='register-page'>
             <img className='move-bg-right ' src='/assets/Images/login-background.png' />
             <div className='move-box-left' id='register-move-box-left'>
-                <RegisterBox 
-                    userData={userData} 
-                    setUserData={setUserData} 
+                <RegisterBox
+                    userData={userData}
+                    setUserData={setUserData}
                     handelRegisterClick={handelRegisterClick}
                     validateError={validateError}
-                    setValidateError={setValidateError} 
+                    setValidateError={setValidateError}
                 />
             </div>
         </div>

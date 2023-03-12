@@ -1,48 +1,48 @@
-.login-page{
+.login-page {
     display: flex;
     flex-direction: row;
     height: 100vh;
 }
 
-.move-bg-right{
+.move-bg-right {
     position: fixed;
     right: 0;
     z-index: 1;
 }
-.move-box-left{
+
+.move-box-left {
     align-self: center;
     padding: 50px;
     background-color: #EBEBF6;
     border-radius: 10%;
     margin-left: 5vw;
     z-index: 2;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 
-@media screen and (max-width: 1364px){
+@media screen and (max-width: 1364px) {
 
-    .move-bg-right{
+    .move-bg-right {
         filter: blur(10px);
     }
 
 }
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 960px) {
 
-    .login-page{
+    .login-page {
         justify-content: center;
     }
 
-    .move-bg-right{
+    .move-bg-right {
         position: fixed;
         margin-left: 30vw;
         right: 0;
     }
 
-    .move-box-left{
+    .move-box-left {
         margin-left: 0;
     }
 
 }
-

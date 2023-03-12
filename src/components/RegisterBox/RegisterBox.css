@@ -1,4 +1,4 @@
-.register-box{
+.register-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
     z-index: 12;
 }
 
-.register-box input{
+.register-box input {
     width: 400px;
     height: 50px;
     border: none;
@@ -20,12 +20,12 @@
 .register-box input::placeholder {
     color: #B0B0B0;
     font-size: 1.2rem;
-    font-weight: bolder;
+    font-weight: 600;
 }
 
-.register-box button{
+.register-box button {
     width: 400px;
-    height:60px;
+    height: 60px;
     border: none;
     border-radius: 20px;
     background-color: #6787FC;
@@ -34,11 +34,11 @@
     cursor: pointer;
 }
 
-.register-box button:hover{
+.register-box button:hover {
     background-color: #2251FF;
 }
 
-.register-link-text{
+.register-link-text {
     color: #6787FC;
     font-size: 1.7rem;
     letter-spacing: 0rem;
@@ -47,20 +47,20 @@
     border-bottom: 3px solid #6787FC;
 }
 
-.register-link-text:hover{
+.register-link-text:hover {
     color: #2251FF;
     border-bottom: 3px solid #2251FF;
 }
 
-@media screen and (max-width: 700px){
-    
-    .register-box{
+@media screen and (max-width: 700px) {
+
+    .register-box {
         height: 490px;
         width: 300px;
-        gap:18px;
+        gap: 18px;
     }
 
-    .register-box input{
+    .register-box input {
         width: 275px;
         height: 50px;
         border: none;
@@ -70,9 +70,9 @@
         font-weight: bolder;
     }
 
-    .register-box > button{
+    .register-box>button {
         width: 275px;
-        height:100px;
+        height: 100px;
         border: none;
         border-radius: 20px;
         background-color: #6787FC;

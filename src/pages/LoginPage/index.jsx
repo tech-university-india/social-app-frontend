@@ -19,11 +19,11 @@ const LoginPage = () => {
                 'password': password
             }
         })
-            .then(resp=>{
+            .then(resp => {
                 localStorage.setItem('jwtToken', resp.access_token);
                 navigate('/feed');
             })
-            .catch(err=>{
+            .catch(err => {
                 setValidateError(err.message);
             });
     };
@@ -32,12 +32,12 @@ const LoginPage = () => {
         <div className='login-page'>
             <img className='move-bg-right' src='/assets/Images/login-background.png' />
             <div className='move-box-left'>
-                <LoginBox 
-                    setEmail={setEmail} 
-                    setPassword={setPassword} 
-                    validateError={validateError} 
-                    setValidateError={setValidateError} 
-                    handleLoginClick={handleLoginClick} 
+                <LoginBox
+                    setEmail={setEmail}
+                    setPassword={setPassword}
+                    validateError={validateError}
+                    setValidateError={setValidateError}
+                    handleLoginClick={handleLoginClick}
                 />
             </div>
         </div>);

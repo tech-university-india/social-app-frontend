@@ -12,6 +12,11 @@ export const REGISTER = {
     method: 'POST',
 };
 
+export const VALIDATE_JWT = {
+    url: '/auth/validate',
+    method: 'GET',
+};
+
 export const GET_PROFILE_BY_ID = (id) => ({
     url: `/profile/${id}`,
     method: 'GET',
@@ -47,12 +52,12 @@ export const GET_SINGLE_ENTITY_BY_ID = (id) => ({
     method: 'GET',
 });
 
-export const GET_ALL_ENTITIES_OF_SINGLE_USERID = (id,entity,size) => ({
+export const GET_ALL_ENTITIES_OF_SINGLE_USERID = (id, entity, size) => ({
     url: `/entity/${entity}/${id}?size=${size}`,
     method: 'GET',
 });
 
-export const GET_FEED = (entity,arrayOfLocations,startDate,endDate,size) => ({
+export const GET_FEED = (entity, arrayOfLocations, startDate, endDate, size) => ({
     url: `/entity/${entity}/feed?locations=${arrayOfLocations}&startDate=${startDate}&endDate=${endDate}&size=${size}`,
     method: 'GET',
 });
@@ -62,7 +67,7 @@ export const DELETE_ENTITY = (id) => ({
     method: 'DELETE',
 });
 
-export const GET_COMMENTS_OF_ENTITYID = (id,size) => ({
+export const GET_COMMENTS_OF_ENTITYID = (id, size) => ({
     url: `/entity/${id}/comments?size=${size}`,
     method: 'GET',
 });
