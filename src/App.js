@@ -1,12 +1,19 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { LoginPage, RegisterPage } from './pages';
 import Home from './pages/Home';
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route exact path='/login' element={<LoginPage />} />
+                <Route exact path='/register' element={<RegisterPage />} />
+                <Route exact path='/post' element={<Home />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

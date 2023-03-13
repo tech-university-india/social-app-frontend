@@ -85,7 +85,13 @@
 }
 
 .icon-w-text {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+}
+
+.icon-w-text img {
+  margin-bottom: 4px;
 }
 
 .app-name-text {
