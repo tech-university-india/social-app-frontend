@@ -1,0 +1,47 @@
+.post-text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    background-color: #cfd9f9d5;
+    border-radius: 10px;
+}
+
+.post-text-box-container {
+    background-color: white;
+}
+
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    width: 35vw;
+    height: 55vh;
+    padding: 10px;
+    font-family: 'MckinseySans-Light', sans-serif;
+    font-size: 1.3rem;
+}
+
+.post-tag-area {
+    margin: 20px 0px;
+    padding-left: 20px;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+}
+
+.post-tag-area>img {
+    cursor: pointer;
+}
+
+.post-tag-area>span:nth-child(2) {
+    margin-left: 10px;
+    max-width: 300px;
+    border: 1px solid #F37154;
+    padding: 3px 6px;
+    color: #616161;
+    background-color: #FFFDFD;
+    border-radius: 10px;
+    cursor: pointer;
+}

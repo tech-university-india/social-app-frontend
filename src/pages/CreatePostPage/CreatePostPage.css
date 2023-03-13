@@ -1,0 +1,63 @@
+.create-post-page {
+    font-family: 'MckinseySans-Medium', sans-serif;
+    width: 100%;
+    height: 100%;
+    min-height: 95vh;
+    margin-top: 5vh;
+    background-color: #EEEEEE;
+}
+
+.post-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 30px;
+    /* background-color: azure; */
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.post-header>span {
+    font-size: 3.5rem;
+    cursor: pointer;
+    transform: translateX(10px);
+}
+
+.post-body {
+    min-height: 60vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.post-page-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.post-page-buttons>button {
+    margin-right: -10px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: x-large;
+    background-color: #2251FF;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 1vh 3vw;
+    transform: translateX(10px);
+}
+
+.post-page-buttons>button:hover {
+    background-color: rgb(1, 53, 240);
+}
