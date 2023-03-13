@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { LoginPage, RegisterPage } from './pages';
+import { LoginPage, ProfilePage, RegisterPage } from './pages';
 
 function App() {
     return (
@@ -9,6 +9,7 @@ function App() {
             <Routes>
                 <Route exact path='/login' element={<LoginPage />} />
                 <Route exact path='/register' element={<RegisterPage />} />
+                <Route exact path='/profile/:username' element={<ProfilePage />} />
             </Routes>
         </BrowserRouter>
     );
