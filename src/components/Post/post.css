@@ -1,4 +1,96 @@
 .post{
-	height: 600px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	width: 1100px;
+	border: 1px solid #000000;
+	border-radius: 20px;
+	padding: 15px;
+	background-color: white;
+}
+
+.post-header{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.post .post-header .user-image{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.post .post-header .user-name-designation{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	margin-left: 10px;
+}
+
+.post .post-body{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 15px 0px;
+}
+
+.post .post-body .caption{
+	max-height: 100px;
+	width: 100%;
+	overflow: scroll;
+	margin-bottom: 15px;
+}
+
+.image-slider{
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
+	height: 500px;
+	width: 100%;
+	border: 1px solid #000000;
+}
+
+.post .post-meta{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.post .post-engagements{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.post .post-engagements > div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+}
+
+.post .comment-box{
+	/* width: 100%; */
+	height: 30px;
+	box-sizing: border-box;
+}
+
+.post .comment-box > input{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	padding: 10px;
+	box-sizing: border-box;
 	border: 1px solid #000000;
 }

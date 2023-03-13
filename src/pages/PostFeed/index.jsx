@@ -3,6 +3,8 @@ import Post from '../../components/Post';
 import { GET_POST_FEED } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
 
+import './PostFeed.css';
+
 const PostFeed = () => {
 
 	const [posts, setPosts] = useState();
@@ -10,7 +12,7 @@ const PostFeed = () => {
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	console.log('rendered')
+	console.log('rendered');
 
 	const memoizedPosts = useMemo(() => posts, [posts]);
 
@@ -20,7 +22,7 @@ const PostFeed = () => {
 		if (observer.current) observer.current.disconnect();
 		observer.current = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting && next) {
-				console.log('visible')
+				console.log('visible');
 				setLoading(true);
 				console.log(next);
 				makeRequest({ url: next, method: GET_POST_FEED().method, headers: GET_POST_FEED().headers })
@@ -36,7 +38,7 @@ const PostFeed = () => {
 			}
 		});
 		if (node) observer.current.observe(node);
-	}, [loading, next])
+	}, [loading, next]);
 
 	useEffect(() => {
 		setLoading(true);
@@ -54,14 +56,14 @@ const PostFeed = () => {
 	}, []);
 
 	const actionHandler = (index) => {
-		console.log(index)
+		console.log(index);
 		setPosts((prevPosts) => {
 			const newPosts = structuredClone(prevPosts);
 			newPosts[index].liked = !newPosts[index].liked;
-			newPosts
+			newPosts;
 			return newPosts;
-		})
-	}
+		});
+	};
 
 	return (
 		// !loading &&
