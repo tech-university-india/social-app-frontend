@@ -1,13 +1,17 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import ProfileInfo from './components/ProfileInfo';
+import { LoginPage, RegisterPage } from './pages';
 
 function App() {
-  return (
-    <div >
-     <ProfileInfo />
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route exact path='/login' element={<LoginPage />} />
+                <Route exact path='/register' element={<RegisterPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
