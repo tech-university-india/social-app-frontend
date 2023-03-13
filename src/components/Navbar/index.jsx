@@ -9,7 +9,9 @@ import profileIcon from '../../Assets/Icons/circle-08.svg';
 const Navbar = () => {
   return (
     <div className='navbar'>
+
       <div className='search-and-icons'>
+        <h3 className='app-name-text'>Socialize</h3>
         <div className='search-bar'>
           <div className='toggle-section'>
             <img src={downIcon} alt='down-arrow' />
