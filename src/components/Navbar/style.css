@@ -1,0 +1,99 @@
+.navbar {
+  background-color: #051C2C;
+  height: 52px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30px;
+  padding-left: 30px;
+
+}
+
+.toggle-section {
+  display: flex;
+  align-items: center;
+  width: 33%;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  width: 29.5vw;
+  height: 35px;
+  background: white;
+  border-radius: 8px;
+  align-items: center;
+  margin-top: 1.4px;
+}
+
+.toggle-section img {
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.search-section {
+  display: flex;
+  width: 66%;
+  justify-content: space-between;
+}
+
+.search-section input {
+  height: 30px;
+  border: none;
+  width: 250px;
+  padding-left: 10px;
+}
+
+.vertical-line {
+  height: 80%;
+  width: 1px;
+  background: rgb(213, 213, 213);
+  border-radius: 2px;
+}
+
+.icons {
+  display: flex;
+  width: 320px;
+  justify-content: space-between;
+}
+
+.icon {
+  height: 24px;
+}
+
+.icons p {
+  font-size: 10px;
+  color: white;
+}
+
+.search-and-icons {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-section input {
+  outline: none;
+}
+
+.search-section img {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.icon-w-text {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.icon-w-text img {
+  margin-bottom: 4px;
+}
+
+.app-name-text {
+  color: white;
+}
