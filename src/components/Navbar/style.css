@@ -100,3 +100,24 @@
 .app-name-text {
   color: white;
 }
+
+.toggle-options {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.toggle-div {
+  position: absolute;
+  top: 31px;
+  right: -92px;
+  width: 169px;
+  height: 34px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 7px;
+}
+
+.toggle-div p {
+  margin-left: 31px;
+  margin-top: 7px
+}
