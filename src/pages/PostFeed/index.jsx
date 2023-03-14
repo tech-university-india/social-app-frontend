@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
-import { Navbar } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 import Entity from '../../components/Entity';
 import { GET_POST_FEED } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
@@ -12,8 +13,9 @@ const PostFeed = () => {
 	const [next, setNext] = useState(null);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
-	console.log('rendered');
+	// console.log('rendered');
 
 	const memoizedPosts = useMemo(() => posts, [posts]);
 
@@ -23,9 +25,9 @@ const PostFeed = () => {
 		if (observer.current) observer.current.disconnect();
 		observer.current = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting && next) {
-				console.log('visible');
+				// console.log('visible');
 				setLoading(true);
-				console.log(next);
+				// console.log(next);
 				makeRequest({ url: next, method: GET_POST_FEED().method, headers: GET_POST_FEED().headers })
 					.then((res) => {
 						setPosts((prevPosts) => [...prevPosts, ...res.items]);
@@ -46,7 +48,7 @@ const PostFeed = () => {
 		setLoading(true);
 		makeRequest(GET_POST_FEED())
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				setPosts(res.items);
 				setNext(res.meta.next);
 				setLoading(false);
@@ -58,13 +60,15 @@ const PostFeed = () => {
 			});
 	}, []);
 
+	if(error) return <div>Something went wrong</div>
+
 	return (
 		// !loading &&
 		<div className="feed">
-			<Navbar />
+			<Navbar navigate={navigate} />
 			<div className="post-feed">
 				{memoizedPosts
-					&& memoizedPosts.map((post, index) => <Entity key={post.id} entity={post} index={index} />
+					&& memoizedPosts.map((post, index) => <Entity key={post.id} entity={post} index={index} navigate={navigate} />
 						// posts.length === index + 1
 						// 	? <Post key={post.id} post={post} index={index} />
 						// 	: <Post key={post.id} ref={lastPostRef} post={post} index={index} handleAction={actionHandler}/>

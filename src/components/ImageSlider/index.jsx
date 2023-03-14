@@ -10,12 +10,12 @@ const ImageSlider = ({ slides }) => {
 	//   console.log("IMAGE SLIDER RERENDER")
 
 	const goToPrevious = () => {
-		console.log('PREV', currentIndex);
+		// console.log('PREV', currentIndex);
 		currentIndex > 0 ? setCurrentIndex(currentIndex - 1) : null ;
 	};
 
 	const goToNext = () => {
-		console.log('NEXT', currentIndex);
+		// console.log('NEXT', currentIndex);
 		currentIndex < slides.length - 1 ? setCurrentIndex(currentIndex + 1) : null ;
 	};
 

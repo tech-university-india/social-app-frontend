@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
-import { Navbar } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 import Entity from '../../components/Entity';
 import { GET_ANNOUNCEMENT_FEED } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
@@ -12,8 +13,9 @@ const Announcements = () => {
 	const [next, setNext] = useState(null);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
-	console.log('rendered');
+	// console.log('rendered');
 
 	const memoizedAnnouncements = useMemo(() => announcements, [announcements]);
 
@@ -23,9 +25,9 @@ const Announcements = () => {
 		if (observer.current) observer.current.disconnect();
 		observer.current = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting && next) {
-				console.log('visible');
+				// console.log('visible');
 				setLoading(true);
-				console.log(next);
+				// console.log(next);
 				makeRequest({ url: next, method: GET_ANNOUNCEMENT_FEED().method, headers: GET_ANNOUNCEMENT_FEED().headers })
 					.then((res) => {
 						setAnnouncements((prevAnnoucements) => [...prevAnnoucements, ...res.items]);
@@ -35,6 +37,7 @@ const Announcements = () => {
 					.catch((err) => {
 						console.log(err);
 						setLoading(false);
+						setError(true);
 					});
 			}
 		});
@@ -45,7 +48,7 @@ const Announcements = () => {
 		setLoading(true);
 		makeRequest(GET_ANNOUNCEMENT_FEED())
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				setAnnouncements(res.items);
 				setNext(res.meta.next);
 				setLoading(false);
@@ -53,15 +56,18 @@ const Announcements = () => {
 			.catch((err) => {
 				console.log(err);
 				setLoading(false);
+				setError(true);
 			});
 	}, []);
+
+	if(error) return <div>Something went wrong</div>
 
 	return (
 		// !loading &&
 		<div className="announcements-wrapper">
-			<Navbar />
+			<Navbar navigate={navigate}/>
 			<div className="announcements">
-				{memoizedAnnouncements && memoizedAnnouncements.map((announcement, index) => <Entity key={announcement.id} entity={announcement} index={index} />)}
+				{memoizedAnnouncements && memoizedAnnouncements.map((announcement, index) => <Entity key={announcement.id} entity={announcement} index={index} navigate={navigate}/>)}
 				<div className="ref-div" ref={lastAnnouncementRef}></div>
 				{loading && <div>Loading...</div>}
 			</div>

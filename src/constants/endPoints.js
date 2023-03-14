@@ -16,7 +16,7 @@ export const GET_POST_FEED = (url = '/entity/post/feed') => ({
 	url: url,
 	method: 'GET',
 	headers: {
-		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4NzM1ODkzLCJleHAiOjE2Nzg4MjIyOTN9.AfpQBIj_g5sbDWcHtAyzDXfyK0kfAI0kjI20V_BirVc'
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4ODIyNzQ1LCJleHAiOjE2Nzg5MDkxNDV9.CWRMQzcFWEGsJM-OxIWIIdVQt99P3E76ldEy0RuYH7E'
 		// Authorization: `Bearer ${localStorage.getItem('token')}`,
 	}
 });
@@ -25,7 +25,7 @@ export const GET_ANNOUNCEMENT_FEED = (url = '/entity/announcement/feed') => ({
 	url: url,
 	method: 'GET',
 	headers: {
-		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4NzM1ODkzLCJleHAiOjE2Nzg4MjIyOTN9.AfpQBIj_g5sbDWcHtAyzDXfyK0kfAI0kjI20V_BirVc'
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4ODIyNzQ1LCJleHAiOjE2Nzg5MDkxNDV9.CWRMQzcFWEGsJM-OxIWIIdVQt99P3E76ldEy0RuYH7E'
 		// Authorization: `Bearer ${localStorage.getItem('token')}`,
 	}
 });
@@ -35,7 +35,7 @@ export const POST_ACTION = (data) => ({
 	method: 'POST',
 	data,
 	headers: {
-		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4NzM1ODkzLCJleHAiOjE2Nzg4MjIyOTN9.AfpQBIj_g5sbDWcHtAyzDXfyK0kfAI0kjI20V_BirVc'
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4ODIyNzQ1LCJleHAiOjE2Nzg5MDkxNDV9.CWRMQzcFWEGsJM-OxIWIIdVQt99P3E76ldEy0RuYH7E'
 		// Authorization: `Bearer ${localStorage.getItem('token')}`,
 	}
 });
@@ -44,7 +44,7 @@ export const DELETE_ACTION = (id) => ({
 	url: `/action/${id}`,
 	method: 'DELETE',
 	headers: {
-		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4NzM1ODkzLCJleHAiOjE2Nzg4MjIyOTN9.AfpQBIj_g5sbDWcHtAyzDXfyK0kfAI0kjI20V_BirVc'
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4ODIyNzQ1LCJleHAiOjE2Nzg5MDkxNDV9.CWRMQzcFWEGsJM-OxIWIIdVQt99P3E76ldEy0RuYH7E'
 		// Authorization: `Bearer ${localStorage.getItem('token')}`,
 	}
 });
