@@ -25,11 +25,11 @@ const ImageSlider = ({ slides }) => {
 
 	return (
 		<div className="slide-styles">
-			<div>
+			<div className="slider-styles"><img src={slides[currentIndex]} alt={currentIndex} loading='lazy'/></div>
+			<div className='arrows'>
 				<div onClick={goToPrevious} className="right-arrow-styles"> ❰ </div>
 				<div onClick={goToNext} className="left-arrow-styles"> ❱ </div>
 			</div>
-			<div className="slider-styles"><img src={slides[currentIndex]} alt={currentIndex} loading='lazy'/></div>
 			<div className="dots-container-styles">
 				{slides.map((slide, slideIndex) => (
 					<div className="dot-style" key={slideIndex} onClick={() => goToSlide(slideIndex)} >●</div>

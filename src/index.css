@@ -1,13 +1,34 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'MckinseySans-Regular';
+  src: url('../public/assets/Fonts/McKinseySans-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'MckinseySans-MediumItalic';
+  src: url('../public/assets/Fonts/McKinseySans-MediumItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'MckinseySans-Medium';
+  src: url('../public/assets/Fonts/McKinseySans-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'MckinseySans-Italic';
+  src: url('../public/assets/Fonts/McKinseySans-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'MckisneySans-LightItalic';
+  src: url('../public/assets/Fonts/McKinseySans-LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'MckinseySans-Light';
+  src: url('../public/assets/Fonts/McKinseySans-Light.woff') format('woff');
 }

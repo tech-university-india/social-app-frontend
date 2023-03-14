@@ -4,7 +4,10 @@
 	display: flex;
 	flex-direction: column;
 	width: 1100px;
-	border: 1px solid #000000;
+	/* border: 1px solid #000000; */
+	/* box-shadow: 0px 4px 4px 0px #000000 25%; */
+	/* box shadow with opacity 25 % */
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 	border-radius: 20px;
 	padding: 15px;
 	background-color: white;
@@ -22,11 +25,18 @@
 	border-radius: 50%;
 }
 
+.post .post-header .user-image img{
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+	border-radius: 50%;
+}
+
 .post .post-header .user-name-designation{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	height: 50px;
 	margin-left: 10px;
 }
@@ -52,7 +62,9 @@
 	align-items: center; */
 	height: 500px;
 	width: 100%;
-	border: 1px solid #000000;
+	border: 1px solid rgba(0, 0, 0, 0.10);
+	border-radius: 10px;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .post .post-meta{
@@ -60,6 +72,14 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 10px;
+}
+
+.post .post-meta img{
+	height: 30px;
+	width: 30px;
+	margin: 0px 5px;
+	/* border-radius: 50%; */
 }
 
 .post .post-engagements{
@@ -74,6 +94,13 @@
 	justify-content: center;
 	align-items: center;
 	padding: 5px;
+}
+
+.post .post-tags{
+	display: flex;
+	flex-direction: row;
+	gap: 6px;
+	align-items: center;
 }
 
 .post .comment-box{
@@ -92,5 +119,5 @@
 	border-radius: 10px;
 	padding: 10px;
 	box-sizing: border-box;
-	border: 1px solid #000000;
+	border: 2px solid #000000;
 }

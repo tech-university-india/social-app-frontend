@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { Navbar } from '../../components';
 import Post from '../../components/Post';
 import { GET_POST_FEED } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
@@ -68,15 +69,18 @@ const PostFeed = () => {
 	return (
 		// !loading &&
 		<div className="feed">
-			{memoizedPosts
-				&& memoizedPosts.map((post, index) => <Post key={post.id} post={post} index={index} />
-					// posts.length === index + 1
-					// 	? <Post key={post.id} post={post} index={index} />
-					// 	: <Post key={post.id} ref={lastPostRef} post={post} index={index} handleAction={actionHandler}/>
-				)
-			}
-			<div className="ref-div" ref={lastPostRef}></div>
-			{loading && <div>Loading...</div>}
+			<Navbar />
+			<div className="post-feed">
+				{memoizedPosts
+					&& memoizedPosts.map((post, index) => <Post key={post.id} post={post} index={index} />
+						// posts.length === index + 1
+						// 	? <Post key={post.id} post={post} index={index} />
+						// 	: <Post key={post.id} ref={lastPostRef} post={post} index={index} handleAction={actionHandler}/>
+					)
+				}
+				<div className="ref-div" ref={lastPostRef}></div>
+				{loading && <div>Loading...</div>}
+			</div>
 		</div>
 	);
 };

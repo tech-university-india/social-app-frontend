@@ -3,6 +3,11 @@ import { POST_ACTION } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
 import ImageSlider from '../ImageSlider';
 
+import like from '../../Assets/Icons/like.svg';
+import liked from '../../Assets/Icons/liked.svg';
+import comments from '../../Assets/Icons/a-chat.svg';
+import tag from '../../Assets/Icons/tag.svg';
+
 import './post.css';
 
 
@@ -14,7 +19,9 @@ const Post = ({ post }) => {
 	const [commentCount, setCommentCount] = React.useState(post.commentCount);
 
 	const likeHandler = () => {
-		isLiked ? null : makeRequest(POST_ACTION({ type: 'LIKE', entityId: post.id }));
+		isLiked 
+		? null : 
+		makeRequest(POST_ACTION({ type: 'LIKE', entityId: post.id }));
 		setIsLiked(!isLiked);
 		setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
 	};
@@ -42,15 +49,16 @@ const Post = ({ post }) => {
 			</div>
 			<div className="post-meta">
 				<div className="post-tags">
+					{post.Tags.length > 0 && <img src={tag} alt="TAG IMAGE" />}
 					{post.Tags.map((tag, index) => <div className="tag" key={index}>{tag.User.userName}</div>)}
 				</div>
 				<div className="post-engagements">
 					<div className="like" onClick={likeHandler}>
-						<div className="is-liked">{ isLiked ? 'Liked' : 'Not Liked' }</div>
+						<div className="is-liked"><img src={ isLiked ? liked : like } alt="LIKE ICON" /></div>
 						<div className="like-count">{likeCount}</div>
 					</div>
 					<div className="comment">
-						<div className="comment-icon"></div>
+						<div className="comment-icon"><img src={comments} alt="COMMENT ICON" /></div>
 						<div className="comment-count">{commentCount}</div>
 					</div>
 					<div className="repost">
