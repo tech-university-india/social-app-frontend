@@ -20,11 +20,13 @@ const FollowAndFollowingModal = ({
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
 
+    const loginToken = localStorage.getItem('jwtToken').split('.')[1];
+    const loginUserId = JSON.parse(window.atob(loginToken)).id;
+    
     useEffect(() => {
         if (isFollow) {
             document.getElementById('follower-tag').style.color = '#2251FF';
             document.getElementById('following-tag').style.color = 'black';
-            console.log(typeof userId, userId);
             makeRequest(GET_FOLLOWERS_OF_USERID(userId))
                 .then((res) => {
                     console.log(res);
@@ -139,27 +141,23 @@ const FollowAndFollowingModal = ({
                         </div>
                     </div>
                     <div className="follow-btn-container">
-                        {console.log(
-                            follower.User.isFollowed === '0',
-                            follower.User.isFollowed
-                        )}
-                        {follower.User.isFollowed === '0' ? (
-                            <button
-                                onClick={() => handleFollowBtnClick(follower.User.FMNO)}
-                                className="action-btn"
-                                id="follow-btn"
-                            >
+                        {follower.User.FMNO !== loginUserId ? (  
+                            follower.User.isFollowed === '0' ? (
+                                <button
+                                    onClick={() => handleFollowBtnClick(follower.User.FMNO)}
+                                    className="action-btn"
+                                    id="follow-btn"
+                                >
                       follow
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => handleUnfollowBtnClick(follower.User.FMNO)}
-                                className="action-btn"
-                            >
+                                </button> 
+                            ) : (
+                                <button
+                                    onClick={() => handleUnfollowBtnClick(follower.User.FMNO)}
+                                    className="action-btn"
+                                >
                       Unfollow
-                            </button>
-                        )}
-                        {/* <button className="follow-btn">follow</button> */}
+                                </button>
+                            )):null}
                     </div>
                 </div>
             ))}
@@ -176,64 +174,26 @@ const FollowAndFollowingModal = ({
                         </div>
                     </div>
                     <div className="follow-btn-container">
-                        {/* {console.log(typeof follower.User.isFollowed)} */}
-                        {follower.User.isFollowed === '0' ? (
-                            <button
-                                onClick={() => handleFollowBtnClick(follower.User.FMNO)}
-                                className="action-btn"
-                                id="follow-btn"
-                            >
+                        {follower.User.FMNO !== loginUserId ? (
+                            follower.User.isFollowed === '0' ? (
+                                <button
+                                    onClick={() => handleFollowBtnClick(follower.User.FMNO)}
+                                    className="action-btn"
+                                    id="follow-btn"
+                                >
                       follow
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => handleUnfollowBtnClick(follower.User.FMNO)}
-                                className="action-btn"
-                            >
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => handleUnfollowBtnClick(follower.User.FMNO)}
+                                    className="action-btn"
+                                >
                       Unfollow
-                            </button>
-                        )}
-                        {/* <button className="follow-btn">Unfollow</button> */}
+                                </button>
+                            )):null}
                     </div>
                 </div>
             ))}
-
-                    {/* <div className="modal-list">
-                        <div className="img-name-desg-container">
-                            <img id="profile-img" src={profileImage} alt="" />
-                            <div className="name-desg-container">
-                                <span className="name">name</span>
-                                <span className="designation">designation</span>
-                            </div>
-                        </div>
-                        <div className="follow-btn-container">
-                            <button className="follow-btn">follow</button>
-                        </div>
-                    </div>
-                    <div className="modal-list">
-                        <div className="img-name-desg-container">
-                            <img id="profile-img" src={profileImage} alt="" />
-                            <div className="name-desg-container">
-                                <span className="name">name</span>
-                                <span className="designation">designation</span>
-                            </div>
-                        </div>
-                        <div className="follow-btn-container">
-                            <button className="follow-btn">follow</button>
-                        </div>
-                    </div>
-                    <div className="modal-list">
-                        <div className="img-name-desg-container">
-                            <img id="profile-img" src={profileImage} alt="" />
-                            <div className="name-desg-container">
-                                <span className="name">name</span>
-                                <span className="designation">designation</span>
-                            </div>
-                        </div>
-                        <div className="follow-btn-container">
-                            <button className="follow-btn">follow</button>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
