@@ -1,24 +1,24 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { Navbar } from '../../components';
 import Entity from '../../components/Entity';
-import { GET_POST_FEED } from '../../constants/endPoints';
+import { GET_ANNOUNCEMENT_FEED } from '../../constants/endPoints';
 import makeRequest from '../../utils/makeRequest';
 
-import './PostFeed.css';
+import './Announcements.css';
 
-const PostFeed = () => {
+const Announcements = () => {
 
-	const [posts, setPosts] = useState();
+	const [announcements, setAnnouncements] = useState();
 	const [next, setNext] = useState(null);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
 
 	console.log('rendered');
 
-	const memoizedPosts = useMemo(() => posts, [posts]);
+	const memoizedAnnouncements = useMemo(() => announcements, [announcements]);
 
 	const observer = new useRef();
-	const lastPostRef = useCallback((node) => {
+	const lastAnnouncementRef = useCallback((node) => {
 		if (loading) return;
 		if (observer.current) observer.current.disconnect();
 		observer.current = new IntersectionObserver((entries) => {
@@ -26,16 +26,15 @@ const PostFeed = () => {
 				console.log('visible');
 				setLoading(true);
 				console.log(next);
-				makeRequest({ url: next, method: GET_POST_FEED().method, headers: GET_POST_FEED().headers })
+				makeRequest({ url: next, method: GET_ANNOUNCEMENT_FEED().method, headers: GET_ANNOUNCEMENT_FEED().headers })
 					.then((res) => {
-						setPosts((prevPosts) => [...prevPosts, ...res.items]);
+						setAnnouncements((prevAnnoucements) => [...prevAnnoucements, ...res.items]);
 						setNext(res.meta.next);
 						setLoading(false);
 					})
 					.catch((err) => {
 						console.log(err);
 						setLoading(false);
-						setError(true);
 					});
 			}
 		});
@@ -44,37 +43,30 @@ const PostFeed = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		makeRequest(GET_POST_FEED())
+		makeRequest(GET_ANNOUNCEMENT_FEED())
 			.then((res) => {
 				console.log(res);
-				setPosts(res.items);
+				setAnnouncements(res.items);
 				setNext(res.meta.next);
 				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
 				setLoading(false);
-				setError(true);
 			});
 	}, []);
 
 	return (
 		// !loading &&
-		<div className="feed">
+		<div className="announcements-wrapper">
 			<Navbar />
-			<div className="post-feed">
-				{memoizedPosts
-					&& memoizedPosts.map((post, index) => <Entity key={post.id} entity={post} index={index} />
-						// posts.length === index + 1
-						// 	? <Post key={post.id} post={post} index={index} />
-						// 	: <Post key={post.id} ref={lastPostRef} post={post} index={index} handleAction={actionHandler}/>
-					)
-				}
-				<div className="ref-div" ref={lastPostRef}></div>
+			<div className="announcements">
+				{memoizedAnnouncements && memoizedAnnouncements.map((announcement, index) => <Entity key={announcement.id} entity={announcement} index={index} />)}
+				<div className="ref-div" ref={lastAnnouncementRef}></div>
 				{loading && <div>Loading...</div>}
 			</div>
 		</div>
 	);
 };
 
-export default PostFeed;
+export default Announcements;

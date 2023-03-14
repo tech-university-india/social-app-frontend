@@ -21,6 +21,15 @@ export const GET_POST_FEED = (url = '/entity/post/feed') => ({
 	}
 });
 
+export const GET_ANNOUNCEMENT_FEED = (url = '/entity/announcement/feed') => ({
+	url: url,
+	method: 'GET',
+	headers: {
+		Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4NzM1ODkzLCJleHAiOjE2Nzg4MjIyOTN9.AfpQBIj_g5sbDWcHtAyzDXfyK0kfAI0kjI20V_BirVc'
+		// Authorization: `Bearer ${localStorage.getItem('token')}`,
+	}
+});
+
 export const POST_ACTION = (data) => ({
 	url: '/action',
 	method: 'POST',

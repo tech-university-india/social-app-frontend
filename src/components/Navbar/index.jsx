@@ -49,29 +49,29 @@ const Navbar = () => {
 
         <div className='icons'>
 
-          <div className='main-feed icon-w-text' onClick={() => {
-            navigate('/post');
+          <div className='posts-feed-icon icon-w-text' onClick={() => {
+            navigate('/posts');
           }}>
             <img src={mainIcon} alt="main-feed-icon" className='icon' />
             <p>Main feed</p>
           </div>
 
-          <div className='announcements icon-w-text' onClick={() => {
+          <div className='announcements-icon icon-w-text' onClick={() => {
             navigate('/announcements');
           }}>
             <img src={announceIcon} alt="announce-icon" className='icon' />
             <p>Announcements</p>
           </div>
 
-          <div className='notifications icon-w-text' onClick={() => {
-            navigate('/notifications');
+          <div className='notifications-icon icon-w-text' onClick={() => {
+            // navigate('/notifications');
           }}>
             <img src={notifyIcon} alt="notify-icon" className='icon' />
             <p>Notifications</p>
           </div>
 
-          <div className='profile icon-w-text' onClick={() => {
-            navigate('/profile/1');
+          <div className='profile-icon icon-w-text' onClick={() => {
+            // navigate('/profile/1');
           }}>
             <img src={profileIcon} alt="profile-icon" className='icon' />
             <p>Profile</p>
