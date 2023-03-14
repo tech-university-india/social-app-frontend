@@ -39,7 +39,7 @@ export const FOLLOW_USER = {
 
 export const UNFOLLOW_USER = (id) => ({
     url: `/profile/unfollow/${id}`,
-    method: 'POST',
+    method: 'DELETE',
 });
 
 export const CREATE_ENTITY = {
