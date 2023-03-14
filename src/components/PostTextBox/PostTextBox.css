@@ -18,7 +18,7 @@ textarea {
     resize: none;
     width: 35vw;
     height: 55vh;
-    padding: 10px;
+    padding: 10px 20px;
     font-family: 'MckinseySans-Light', sans-serif;
     font-size: 1.3rem;
 }
