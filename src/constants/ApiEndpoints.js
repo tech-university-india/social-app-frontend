@@ -32,6 +32,11 @@ export const GET_FOLLOWING_OF_USERID = (id) => ({
     method: 'GET',
 });
 
+export const FOLLOW_USER = {
+    url: '/profile/follow',
+    method: 'POST',
+};
+
 export const UNFOLLOW_USER = (id) => ({
     url: `/profile/unfollow/${id}`,
     method: 'POST',

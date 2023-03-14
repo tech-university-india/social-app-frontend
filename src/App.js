@@ -9,7 +9,7 @@ function App() {
             <Routes>
                 <Route exact path='/login' element={<LoginPage />} />
                 <Route exact path='/register' element={<RegisterPage />} />
-                <Route exact path='/profile/:username' element={<ProfilePage />} />
+                <Route exact path='/profile/:userId' element={<ProfilePage />} />
             </Routes>
         </BrowserRouter>
     );
