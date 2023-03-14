@@ -11,3 +11,11 @@ export const formatErrorMessage = (errorMessage) => {
 
     return newErrorMessage;
 };
+
+export const checkFollowers = (followers, userId) => {
+    console.log(followers, userId);
+    const isFollower = followers.some(
+        (follower) => follower.User.FMNO === userId
+    );
+    return isFollower;
+};

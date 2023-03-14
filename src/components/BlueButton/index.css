@@ -10,6 +10,14 @@ top: 426px;
 color: white;
 background-color: #2251FF;
 border-radius: 10px;
+
+}
+
+.follow-button:hover {
+    
+    cursor: pointer;
+    background-color: #1f42e0;
+    opacity: 0.8;
 }
 
 .follow-button-text {

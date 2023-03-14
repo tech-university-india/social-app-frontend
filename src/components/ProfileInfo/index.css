@@ -1,11 +1,12 @@
 .profile-info {
     margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 22px;
     display: flex;
     flex-direction: column;
     width: 250px;
     align-items: center;
-    min-height: 90vh;
+    min-height: 87vh;
     padding: 20px;
     background-color: #ebebf6;
     border-radius: 10px;

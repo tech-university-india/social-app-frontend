@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileImage from '../../assests/img_avatar.png';
 import './index.css';
 import {} from '@fortawesome/free-solid-svg-icons';
@@ -7,10 +7,73 @@ import WhiteButton from '../WhiteButton';
 import { MdOutlinePeopleAlt } from 'react-icons/md';
 import { IoIosPeople } from 'react-icons/io';
 import PropTypes from 'prop-types';
+import { checkFollowers } from '../../utils/common';
+import makeRequest from '../../utils/makeRequest';
+import { useParams } from 'react-router';
+import BlueBorderButton from '../BlueBorderButton';
 
+function ProfileInfo({ profileData, ownProfile, following, followers }) {
+    //get token from local storage
+    const token = localStorage.getItem('jwtToken');
+    //use atob to decode the token
+    const decodedToken = atob(token.split('.')[1]);
+    //parse the decoded token to get the user id
+    const parsedToken = JSON.parse(decodedToken);
 
-function ProfileInfo({profileData, ownProfile, following, followers}) {
-    
+    const [isFollowing, setIsFollowing] = useState(
+        checkFollowers(followers, parsedToken.id)
+    );
+
+    useEffect(() => {
+        console.log(
+            'check followers',
+            checkFollowers(followers, parsedToken.id)
+        );
+        console.log('is following', isFollowing);
+        setIsFollowing(checkFollowers(followers, parsedToken.id));
+    },[followers]);
+
+    const { userId } = useParams();
+
+    const handleUnfollow = () => {
+        try {
+            console.log('unfollow');
+            const unfollow = async () => {
+                await makeRequest({
+                    method: 'DELETE',
+                    url: `/profile/unfollow/${userId}`,
+                });
+            };
+            unfollow();
+            setIsFollowing(false);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const handleFollow = () => {
+        console.log('follow');
+        try {
+            const follow = async () => {
+                await makeRequest(
+                    {
+                        method: 'POST',
+                        url: '/profile/follow/',
+                    },
+                    {
+                        data: {
+                            userId: userId,
+                        },
+                    }
+                );
+            };
+            follow();   
+
+            setIsFollowing(true);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     return (
         <div>
@@ -21,8 +84,16 @@ function ProfileInfo({profileData, ownProfile, following, followers}) {
                     <div className="title">
                         <div>{profileData.designation}</div>
                     </div>
-                    <div className="button">
-                        <BlueButton text={ownProfile ? 'Edit Profile' : 'Follow'} />
+                    <div
+                        onClick={isFollowing ? handleUnfollow : handleFollow}
+                        className="button"
+                    >
+                        {isFollowing && <BlueBorderButton text="Unfollow" />}
+                        {!isFollowing && (
+                            <BlueButton
+                                text={ownProfile ? 'Edit Profile' : 'Follow'}
+                            />
+                        )}
                     </div>
                     <div className="meta">
                         <div className="following">
@@ -66,5 +137,4 @@ ProfileInfo.propTypes = {
     ownProfile: PropTypes.bool,
     following: PropTypes.array,
     followers: PropTypes.array,
-    
 };
