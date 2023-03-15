@@ -32,6 +32,10 @@
     margin: 0 15px;
 }
 
+.tagging-modal-header>span>img {
+    transform: translate(50px, 0);
+}
+
 .tagging-modal-buttons {
     align-self: flex-end;
 }

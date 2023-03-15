@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './ImageDropBox.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const ImageDropBox = () => {
@@ -16,12 +17,19 @@ const ImageDropBox = () => {
 
 	const handleImageChange = (e) => {
 		if (e.target.files[0].type.split('/')[0] != 'image') {
-			alert('Please upload an image file');
+			toast.error('You can upload only images', {
+				position: toast.POSITION.BOTTOM_CENTER,
+				bodyClassName: 'error-toast-body-class',
+				className: 'error-toast-outer-class'
+			});
 			return;
 		}
-		if(file.length >= 3)
-		{
-			alert('You can upload only 3 images');
+		if (file.length >= 3) {
+			toast.error('You can upload maximum of 3 images', {
+				position: toast.POSITION.BOTTOM_CENTER,
+				className: 'error-toast-outer-class',
+				bodyClassName: 'error-toast-body-class'
+			});
 			return;
 		}
 		setFile([...file, URL.createObjectURL(e.target.files[0])]);
@@ -73,12 +81,18 @@ const ImageDropBox = () => {
 						<div className='img-black-bg' onClick={handleAddImageClick} >
 							<img src='/assets/Icons/image-add.svg' />
 						</div>
-						<div className='img-black-bg' onClick={handleDeleteImageClick} >
-							<img src='/assets/Icons/image-delete.svg' />
-						</div>
+						{
+							file.length != 0 &&
+							<div className='img-black-bg' onClick={handleDeleteImageClick} >
+								<img src='/assets/Icons/image-delete.svg' />
+							</div>
+						}
 					</div>
 				</div>
 			</div>
+			<ToastContainer
+				hideProgressBar={true}
+			/>
 		</div>
 	);
 };

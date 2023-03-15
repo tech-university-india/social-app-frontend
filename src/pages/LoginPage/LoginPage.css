@@ -12,14 +12,15 @@
 
 .move-box-left {
     align-self: center;
+    justify-self: flex-end;
     padding: 50px;
     background-color: #EBEBF6;
     border-radius: 10%;
     margin-left: 5vw;
     z-index: 2;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    transform: translateX(10rem);
 }
-
 
 @media screen and (max-width: 1364px) {
 
@@ -43,6 +44,7 @@
 
     .move-box-left {
         margin-left: 0;
+        transform: translateX(-3rem);
     }
 
 }

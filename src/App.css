@@ -1,0 +1,7 @@
+.error-toast-outer-class {
+    border: 0.5px solid red;
+}
+
+.error-toast-body-class {
+    color: rgb(219, 78, 78);
+}

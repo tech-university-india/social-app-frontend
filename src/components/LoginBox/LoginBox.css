@@ -23,8 +23,15 @@
     font-weight: 600;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .login-box button {
-    width: 400px;
+    transform: translate(0, -40px);
+    width: 420px;
     height: 60px;
     border: none;
     border-radius: 20px;
@@ -45,6 +52,7 @@
     cursor: pointer;
     text-decoration: none;
     border-bottom: 3px solid #6787FC;
+    transform: translate(0, -20px);
 }
 
 .login-link-text:hover {

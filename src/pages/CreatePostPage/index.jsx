@@ -7,8 +7,8 @@ const CreatePostPage = () => {
 			<Navbar />
 			<div className='post-container'>
 				<div className='post-header'>
-					<h1>Post It!</h1>
-					<span>X</span>
+					<h1>Post It !</h1>
+					<span><img src='/assets/Icons/c-remove.svg' /></span>
 				</div>
 				<div className='post-body'>
 					<div className='post-body-left'>
