@@ -20,6 +20,12 @@ function ProfileInfo({ profileData, ownProfile, following, followers }) {
     //parse the decoded token to get the user id
     const parsedToken = JSON.parse(decodedToken);
 
+    const [showAllInterests, setShowAllInterests] = useState(false);
+
+    const handleShowAllInterests = () => {
+        setShowAllInterests(!showAllInterests);
+    };
+
     const [isFollowing, setIsFollowing] = useState(
         checkFollowers(followers, parsedToken.id)
     );
@@ -31,7 +37,7 @@ function ProfileInfo({ profileData, ownProfile, following, followers }) {
         );
         console.log('is following', isFollowing);
         setIsFollowing(checkFollowers(followers, parsedToken.id));
-    },[followers]);
+    }, [followers]);
 
     const { userId } = useParams();
 
@@ -67,7 +73,7 @@ function ProfileInfo({ profileData, ownProfile, following, followers }) {
                     }
                 );
             };
-            follow();   
+            follow();
 
             setIsFollowing(true);
         } catch (e) {
@@ -108,20 +114,41 @@ function ProfileInfo({ profileData, ownProfile, following, followers }) {
 
                     <div className="interests">
                         <div className="interest-title">Interests</div>
-
-                        {profileData.Interests &&
-                            profileData.Interests.map((interest) => {
-                                return (
-                                    <WhiteButton
-                                        key={interest.id}
-                                        text={interest.interestName}
-                                    />
-                                );
-                            })}
-
-                        <div className="more-interests">
-                            <a href="">More</a>
+                        <div
+                            className={`interest-list ${
+                                showAllInterests
+                                    ? 'interest-list-scrollable'
+                                    : ''
+                            }`}
+                        >
+                            {profileData.Interests &&
+                                profileData.Interests.slice(
+                                    0,
+                                    showAllInterests ? undefined : 3
+                                ).map((interest) => {
+                                    return (
+                                        <WhiteButton
+                                            key={interest.id}
+                                            text={interest.interestName}
+                                        />
+                                    );
+                                })}
                         </div>
+                        {!showAllInterests && (
+                            <div className="more-interests">
+                                <a href="#" onClick={handleShowAllInterests}>
+                                    More
+                                </a>
+                            </div>
+                        )}
+
+                        {showAllInterests && (
+                            <div className="more-interests">
+                                <a href="#" onClick={handleShowAllInterests}>
+                                    Less
+                                </a>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

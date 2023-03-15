@@ -94,3 +94,8 @@
     font-size: 20px;
     margin-top: 20px;
 }
+
+.interest-list-scrollable {
+    overflow: auto;
+    max-height: 250px; /* or whatever height you want */
+}
